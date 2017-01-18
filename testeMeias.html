@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste Meias</title>
+</head>
+<body>
+
+	<h3>Quantidade de meias : </h3>
+	<input class="number" id="qtdMeias" required="required"  />
+
+	<h3>Pares de meias : </h3>
+	<input type="text" id="parMeias" required="required" />
+
+	<button onclick="calcular()" >Enviar</button>
+
+	<h3>Resultado: </h3>
+	<div id="resultado" > 0 </div>
+
+</body>
+<script type="text/javascript">
+
+	var qtdMeias = document.getElementById('qtdMeias');
+	var parMeias = document.getElementById('parMeias');	
+	var resultado = document.getElementById('resultado');	
+	
+	function calcular(){
+		var qtdPar = parMeias.value.trim().split(" ");
+
+		if(qtdMeias.value <= 1 || qtdMeias.value >= 100 ){
+			alert("Quantidade de meias maoires/menores que o permitido");
+			qtdMeias.value = 	 "";
+			parMeias.value = "";
+			resultado.innerHTML = "";
+			
+		}else{
+			if(isTotalMeiasIgualPares(qtdPar.length, parseInt(qtdMeias.value))){
+				var valor = somaPares(qtdPar);
+				resultado.innerHTML = valor;
+			}else{
+				alert("Os pares tem que ser igual o total informado de total de meias");
+				parMeias.value = " ";
+				resultado.innerHTML = 0;
+			}
+		}
+
+	};
+
+	function isTotalMeiasIgualPares(meias, nrMeias){
+		return meias === nrMeias
+	}	
+
+	function somaPares(meias) {
+			meias.sort();
+			var valor = 0;
+
+		  	for (var i = 0; i < meias.length; ) {
+		    		if (meias[i] == meias[i+1]){
+		    			meias.shift();
+		    			meias.shift();
+		    			valor++;
+		    		}else{
+		    			meias.shift();
+		    		}
+		 	} 	
+		return valor;
+	}
+</script>
+
+</html>
+
