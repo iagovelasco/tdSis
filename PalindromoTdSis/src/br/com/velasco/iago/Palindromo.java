@@ -15,6 +15,7 @@ public class Palindromo {
 		System.out.print("Digite a string de entrada : ");
 		String s = scanner.next();
 
+		//Chama funcao passando o parametro "s" = String
 		temNumero(s);
 		verificaTamanho(s);
 		revert(s);
@@ -22,8 +23,10 @@ public class Palindromo {
 		System.out.print("Digite a quantidade de verificações: ");
 		int verificacoes = scanner.nextInt();
 
+		//Chama funcao pasando o parametro Int (verificação)
 		verificaNumeros(verificacoes);
 
+		//Calculo palindromo
 		List<int[]> indexes = new ArrayList<>();
 		for (int x = 1; x <= verificacoes; x++) {
 			scanner = new Scanner(System.in);
@@ -87,6 +90,7 @@ public class Palindromo {
 	}
 
 	public static String revert(String texto) {
+		//.Reverse() texto (String)
 		new StringBuilder(texto).reverse().toString();
 		return texto;
 	}
@@ -100,7 +104,7 @@ public class Palindromo {
 	}
 
 	/**
-	 * 
+	 * Analisar os indexes
 	 * @param sizes
 	 * @return
 	 */

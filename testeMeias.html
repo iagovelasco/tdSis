@@ -18,14 +18,16 @@
 
 </body>
 <script type="text/javascript">
-
+	//Pegar valores digitados
 	var qtdMeias = document.getElementById('qtdMeias');
 	var parMeias = document.getElementById('parMeias');	
 	var resultado = document.getElementById('resultado');	
 	
+	//Funcao calcular
 	function calcular(){
+		//Split da qtd de meias
 		var qtdPar = parMeias.value.trim().split(" ");
-
+		//Compara se o valor digitado esta dentro da condicao solicitada
 		if(qtdMeias.value <= 1 || qtdMeias.value >= 100 ){
 			alert("Quantidade de meias maoires/menores que o permitido");
 			qtdMeias.value = 	 "";
@@ -33,6 +35,7 @@
 			resultado.innerHTML = "";
 			
 		}else{
+			//verifica se é TRUE para chamar a funcao que calcula quantos pares
 			if(isTotalMeiasIgualPares(qtdPar.length, parseInt(qtdMeias.value))){
 				var valor = somaPares(qtdPar);
 				resultado.innerHTML = valor;
@@ -46,19 +49,24 @@
 	};
 
 	function isTotalMeiasIgualPares(meias, nrMeias){
+		//verifica se a qtd de meias é igual ao numeros digitados do valor separado pelo (split)
 		return meias === nrMeias
 	}	
 
 	function somaPares(meias) {
+			//Ordena o array
 			meias.sort();
 			var valor = 0;
 
 		  	for (var i = 0; i < meias.length; ) {
 		    		if (meias[i] == meias[i+1]){
+		    			//se os primeiros 2 numeros forem iguais tira os 2 primeiros
 		    			meias.shift();
 		    			meias.shift();
+		    			//e soma
 		    			valor++;
 		    		}else{
+		    			//se nao retira só o primeiro
 		    			meias.shift();
 		    		}
 		 	} 	
